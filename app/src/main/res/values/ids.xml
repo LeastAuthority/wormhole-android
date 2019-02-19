@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="code" />
+    <item type="id" name="message" />
+    <item type="id" name="button_send" />
+    <item type="id" name="button_receive" />
+</resources>
