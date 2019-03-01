@@ -14,11 +14,14 @@ public class WormholeActivity extends AppCompatActivity {
     }
 
     private static native String receive(String server, String appid, String code);
+    private static native void init();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wormhole);
+
+        WormholeActivity.init();
     }
 
     /** Called when the user taps the Send button */
@@ -45,6 +48,12 @@ public class WormholeActivity extends AppCompatActivity {
         //Wormhole w = new Wormhole();
         String s = "ws://relay.magic-wormhole.io:4000/v1";
         String appId = "lothar.com/wormhole/text-or-file-xfer";
+
+        // TODO:
+        // 1. If code is empty and the receive button is pressed,
+        //    prompt the user via a toast to enter the code.
+        // 2. Receive button should have 2 states, indicated by the colour.
+        //    a. normal state, b. button pressed state
 
         String rxText = WormholeActivity.receive(s, appId, code);
 
