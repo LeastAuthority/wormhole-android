@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffffff</color>
+    <color name="darkwhite">#ffeeeeee</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="semitransparent">#88000000</color>
+    <color name="orange">#ffff8800</color>
+    <color name="light_orange">#ffe27d18</color>
+    <color name="light_blue">#ff00a2e8</color>
+    <color name="black">#ff000000</color>
+    <color name="menuButtonColor">#ffea8e44</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="grey">#808080</color>
 </resources>

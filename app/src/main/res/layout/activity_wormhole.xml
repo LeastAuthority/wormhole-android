@@ -34,14 +34,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:onClick="sendMessage"
-            android:text="@string/send" />
+            android:text="@string/send"
+            android:background="@drawable/my_button_selector" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:onClick="receiveMessage"
-            android:text="@string/receive" />
+            android:text="@string/receive"
+            android:background="@drawable/my_button_selector" />
     </LinearLayout>
 
 </LinearLayout>
