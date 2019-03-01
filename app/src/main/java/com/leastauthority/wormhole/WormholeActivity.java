@@ -1,11 +1,14 @@
 package com.leastauthority.wormhole;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WormholeActivity extends AppCompatActivity {
 
@@ -50,13 +53,20 @@ public class WormholeActivity extends AppCompatActivity {
         String appId = "lothar.com/wormhole/text-or-file-xfer";
 
         // TODO:
-        // 1. If code is empty and the receive button is pressed,
-        //    prompt the user via a toast to enter the code.
-        // 2. Receive button should have 2 states, indicated by the colour.
-        //    a. normal state, b. button pressed state
+        // Receive button should have 2 states, indicated by the colour.
+        // a. normal state, b. button pressed state
 
-        String rxText = WormholeActivity.receive(s, appId, code);
+        if (code.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please enter the code";
+            int duration = Toast.LENGTH_SHORT;
 
-        messageText.setText(rxText);
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.TOP, 0, 0);
+            toast.show();
+        } else {
+            String rxText = WormholeActivity.receive(s, appId, code);
+            messageText.setText(rxText);
+        }
     }
 }
