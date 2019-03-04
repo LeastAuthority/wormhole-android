@@ -52,10 +52,6 @@ public class WormholeActivity extends AppCompatActivity {
         String s = "ws://relay.magic-wormhole.io:4000/v1";
         String appId = "lothar.com/wormhole/text-or-file-xfer";
 
-        // TODO:
-        // Receive button should have 2 states, indicated by the colour.
-        // a. normal state, b. button pressed state
-
         if (code.isEmpty()) {
             Context context = getApplicationContext();
             CharSequence text = "Please enter the code";
