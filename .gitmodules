@@ -1,0 +1,4 @@
+[submodule "magic-wormhole.rs"]
+	path = magic-wormhole.rs
+	url = git@github.com:vu3rdd/magic-wormhole.rs
+	branch = android
