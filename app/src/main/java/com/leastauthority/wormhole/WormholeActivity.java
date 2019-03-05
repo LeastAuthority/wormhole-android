@@ -17,7 +17,10 @@ public class WormholeActivity extends AppCompatActivity {
     }
 
     private static native String receive(String server, String appid, String code);
+    private static native void send(long ptr, String code, String msg);
     private static native void init();
+    private static native long connect(String appid, String server);
+    private static native String getcode(long ptr);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +32,29 @@ public class WormholeActivity extends AppCompatActivity {
 
     /** Called when the user taps the Send button */
     public void sendMessage(View view) {
-        // Do something in response to button
-        //Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText messageText = (EditText) findViewById(R.id.message);
+        EditText codeText = (EditText) findViewById(R.id.code);
+
         String message = messageText.getText().toString();
 
-        //String s = "ws://127.0.0.1:4000/v1";
-        //String appId = "lothar.com/wormhole/text-or-file-xfer";
+        String s = "ws://relay.magic-wormhole.io:4000/v1";
+        String appId = "lothar.com/wormhole/text-or-file-xfer";
+
+        if (message.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please enter the message";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.TOP, 0, 0);
+            toast.show();
+        } else {
+            long w = WormholeActivity.connect(appId, s);
+            String code = WormholeActivity.getcode(w);
+
+            codeText.setText(code);
+            WormholeActivity.send(w, code, message);
+        }
 
         //System.out.println("received: " + Wormhole.send(s, appId, "foobar"));
     }
@@ -48,7 +67,6 @@ public class WormholeActivity extends AppCompatActivity {
 
         String code = codeText.getText().toString();
 
-        //Wormhole w = new Wormhole();
         String s = "ws://relay.magic-wormhole.io:4000/v1";
         String appId = "lothar.com/wormhole/text-or-file-xfer";
 
