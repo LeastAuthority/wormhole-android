@@ -40,6 +40,17 @@ public class WormholeActivity extends AppCompatActivity {
         String s = "ws://relay.magic-wormhole.io:4000/v1";
         String appId = "lothar.com/wormhole/text-or-file-xfer";
 
+        long w = WormholeActivity.connect(appId, s);
+        String code = WormholeActivity.getcode(w);
+
+        // TODO: This sets the code, but is never shown on the screen until
+        // we exit this function. However, we need to show it on the screen
+        // in order for the rest of the function to finish. :-(
+        // So, currently this is not functional. If we println the code, it
+        // shows up on the logcat which can be used on the other side to
+        // receive the message.
+        codeText.setText(code);
+
         if (message.isEmpty()) {
             Context context = getApplicationContext();
             CharSequence text = "Please enter the message";
@@ -49,10 +60,6 @@ public class WormholeActivity extends AppCompatActivity {
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else {
-            long w = WormholeActivity.connect(appId, s);
-            String code = WormholeActivity.getcode(w);
-
-            codeText.setText(code);
             WormholeActivity.send(w, code, message);
         }
 

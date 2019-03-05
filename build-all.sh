@@ -21,6 +21,12 @@ cd ..
 
 echo "Copying the library into the app jniLibs directory"
 
+# delete existing copies of .so files
+rm app/src/main/jniLibs/arm64/libmagic_wormhole_io_blocking.so
+rm app/src/main/jniLibs/x86/libmagic_wormhole_io_blocking.so
+rm app/src/main/jniLibs/armeabi/libmagic_wormhole_io_blocking.so
+
+# copy newly built versions
 cp magic-wormhole.rs/target/aarch64-linux-android/release/libmagic_wormhole_io_blocking.so app/src/main/jniLibs/arm64/
 cp magic-wormhole.rs/target/i686-linux-android/release/libmagic_wormhole_io_blocking.so app/src/main/jniLibs/x86/
 cp magic-wormhole.rs/target/armv7-linux-androideabi/release/libmagic_wormhole_io_blocking.so app/src/main/jniLibs/armeabi/
@@ -28,5 +34,4 @@ cp magic-wormhole.rs/target/armv7-linux-androideabi/release/libmagic_wormhole_io
 # now build the java app
 
 echo "Building the Android Java App"
-
 ./gradlew assembleDebug
