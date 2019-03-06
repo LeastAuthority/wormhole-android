@@ -2,6 +2,7 @@ package com.leastauthority.wormhole;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -60,7 +61,8 @@ public class WormholeActivity extends AppCompatActivity {
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else {
-            WormholeActivity.send(w, code, message);
+            //WormholeActivity.send(w, code, message);
+            new MsgSendTask().execute(Long.toString(w), code, message);
         }
 
         //System.out.println("received: " + Wormhole.send(s, appId, "foobar"));
@@ -88,6 +90,36 @@ public class WormholeActivity extends AppCompatActivity {
         } else {
             String rxText = WormholeActivity.receive(s, appId, code);
             messageText.setText(rxText);
+        }
+    }
+
+    private class MsgSendTask extends AsyncTask<String, Integer, void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+        }
+
+        @Override
+        protected void doInBackground(String... params) {
+            long w = Long.parseLong(params[0]);
+            String code = params[1];
+            String msg = params[2];
+
+            WormholeActivity.send(w, code, msg);
+            // TODO: catch any exceptions and return an appropriate
+            // value to the caller, so that a message can be displayed
+            // to the user.
         }
     }
 }
