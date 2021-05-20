@@ -93,25 +93,25 @@ public class WormholeActivity extends AppCompatActivity {
         }
     }
 
-    private class MsgSendTask extends AsyncTask<String, Integer, void> {
+    private class MsgSendTask extends AsyncTask<String, Integer, Void> {
 
-        @Override
+        //@Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
-        @Override
+        //@Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
+        //@Override
+        // protected void onPostExecute(String result) {
+        //     super.onPostExecute(result);
+        // }
 
-        @Override
-        protected void doInBackground(String... params) {
+        //@Override
+        protected Void doInBackground(String... params) {
             long w = Long.parseLong(params[0]);
             String code = params[1];
             String msg = params[2];
@@ -120,6 +120,7 @@ public class WormholeActivity extends AppCompatActivity {
             // TODO: catch any exceptions and return an appropriate
             // value to the caller, so that a message can be displayed
             // to the user.
+            return null;
         }
     }
 }
