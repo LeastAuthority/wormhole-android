@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import wormhole.Client;
+
 public class WormholeActivity extends AppCompatActivity {
 
     static {
@@ -28,6 +30,7 @@ public class WormholeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wormhole);
 
+        Client client = new Client();
         WormholeActivity.init();
     }
 
